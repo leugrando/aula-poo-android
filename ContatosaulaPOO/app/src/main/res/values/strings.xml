@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Contatos.aulaPOO</string>
+    <string name="Nome">Nome</string>
+    <string name="Sobrenome">Sobrenome</string>
+    <string name="Telefone">Telefone</string>
+
+
+</resources>
