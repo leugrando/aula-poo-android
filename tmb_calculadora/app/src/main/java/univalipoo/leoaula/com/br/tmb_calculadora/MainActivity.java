@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,51 +13,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final RadioButton masc = (RadioButton) findViewById(R.id.botaoMasculino);
-        final RadioButton fem = (RadioButton) findViewById(R.id.botaoFeminino);
-    masc.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (masc.isChecked()){
-            //fazer calculo masc;
-        }
-            if(fem.isChecked()){
-                //fazer calculo fem
-            }
 
-    });
-
-
-
-
+    }
 
     public void fazerAParadaAcontecer(View elementoClicado){
-        EditText altura = findViewById(R.id.etAltura);
-        EditText peso = findViewById(R.id.etPeso);
-        EditText idade = findViewById(R.id.etIdade);
-        TextView tmb = findViewById(R.id.tvTmb);
+        EditText valor = findViewById(R.id.etValor);
+        EditText porcentagem = findViewById(R.id.etPorcentagem);
+        TextView juros = findViewById(R.id.tvJuros);
 
-        String alturaDigitada = altura.getText().toString();
-        String pesoDigitado = peso.getText().toString();
-        String idadeDigitada = idade.getText().toString();
+        String valorDigitado = valor.getText().toString();
+        String porcentagemDigitada = porcentagem.getText().toString();
 
-        if(alturaDigitada.equals("")  || pesoDigitado.equals("") || idadeDigitada.equals("")){
-            altura.setError("Informe a altura");
-            peso.setError("Informe o peso");
-            idade.setError("Informe a idade");
+
+        if(valorDigitado.equals("")  || porcentagemDigitada.equals("")){
+            valor.setError("Informe o valor");
+            porcentagem.setError("Informe a porcentagem");
+
             return;
         }
 
         try{
-            double alturaEmDouble = Double.parseDouble(alturaDigitada);
-            double pesoEmDouble = Double.parseDouble(pesoDigitado);
-            double idadeEmDouble = Double.parseDouble(idadeDigitada);
-            double resultadoTmb = pesoEmDouble+idadeEmDouble+alturaEmDouble;
+            float porcentagemEmFloat = Float.parseFloat(porcentagemDigitada);
+            float valorEmFloat = Float.parseFloat(valorDigitado);
+
+            float resultadoEmFloat = (valorEmFloat*porcentagemEmFloat)/100;
 
 
-            //tmb.setText( "TMB: "+resultadoTmb );
+            juros.setText( "JUROS: "+resultadoEmFloat+"REAIS");
 
-            tmb.setVisibility(View.VISIBLE);
+            juros.setVisibility(View.VISIBLE);
         }catch (Exception e){
             Toast mensagemErro = Toast.makeText(this, "Algo errado aconteceu", Toast.LENGTH_LONG);
             mensagemErro.show();
@@ -67,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-});
-
-    };
 }
+
+

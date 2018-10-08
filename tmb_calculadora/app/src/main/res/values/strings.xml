@@ -1,16 +1,11 @@
 <resources>
     <string name="app_name">tmb_calculadora</string>
 
-    <string name="feminino">Feminino</string>
-    <string name="masculino">Masculino</string>
-    <string name="sexo">Escolha seu sexo: </string>
-    <string name="altura">Digite sua altura:</string>
-    <string name="peso">Digite seu peso:</string>
-    <string name="idade">Digite sua idade:</string>
+    <string name="valor">Digite o valor:</string>
+    <string name="porcentagem">Digite a porcentagem:</string>
     <string name="calcular">Calcular </string>
-    <string name="kg">kg</string>
-    <string name="cm">cm </string>
-    <string name="calcladora">Calculadora de TMB: </string>
-    <string name="anos">anos </string>
+    <string name="simboloP">% </string>
+    <string name="calculadora">Calculadora de juros: </string>
+
 
 </resources>
