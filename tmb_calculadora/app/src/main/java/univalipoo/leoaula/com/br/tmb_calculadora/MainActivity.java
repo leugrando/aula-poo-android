@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             float resultadoEmFloat = (valorEmFloat*porcentagemEmFloat)/100;
 
 
-            juros.setText( "JUROS: "+resultadoEmFloat+"REAIS");
+            juros.setText( "JUROS: "+resultadoEmFloat);
 
             juros.setVisibility(View.VISIBLE);
         }catch (Exception e){

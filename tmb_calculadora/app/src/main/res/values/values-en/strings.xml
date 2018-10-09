@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">tmb_calculadora</string>
+
+    <string name="valor">Enter the value:</string>
+    <string name="porcentagem">Enter the percentage:</string>
+    <string name="calcular">CALCULATE </string>
+    <string name="simboloP">% </string>
+    <string name="jurosMsg">Interest: </string>
+    <string name="calculadora">INTEREST CALCULATION: </string>
+</resources>

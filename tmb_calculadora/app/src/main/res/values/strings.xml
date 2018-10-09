@@ -3,9 +3,9 @@
 
     <string name="valor">Digite o valor:</string>
     <string name="porcentagem">Digite a porcentagem:</string>
-    <string name="calcular">Calcular </string>
+    <string name="calcular">CALCULAR </string>
     <string name="simboloP">% </string>
+    <string name="jurosMsg">JUROS: </string>
     <string name="calculadora">Calculadora de juros: </string>
-
 
 </resources>

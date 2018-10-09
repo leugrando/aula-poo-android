@@ -12,12 +12,16 @@
         android:layout_width="50dp"
         android:layout_height="45dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="244dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
         android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/porcentagem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.782"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -32,38 +36,40 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPorcentagem" />
+        app:layout_constraintTop_toBottomOf="@+id/etPorcentagem"
+        app:layout_constraintVertical_bias="0.157" />
 
 
     <TextView
         android:id="@+id/valor"
         android:layout_width="153dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="43dp"
-        android:layout_marginStart="33dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="8dp"
         android:text="@string/valor"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/etPorcentagem"
-        app:layout_constraintEnd_toStartOf="@+id/etValor"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calculadora" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.372" />
 
     <TextView
         android:id="@+id/porcentagem"
         android:layout_width="253dp"
         android:layout_height="39dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="4dp"
         android:text="@string/porcentagem"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valor" />
+        app:layout_constraintTop_toBottomOf="@+id/valor"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <android.support.design.widget.TextInputLayout
@@ -91,22 +97,23 @@
         android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="@+id/valor"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/valor"
-        app:layout_constraintTop_toTopOf="@+id/valor" />
+        app:layout_constraintTop_toTopOf="@+id/valor"
+        app:layout_constraintVertical_bias="0.692" />
 
 
     <TextView
         android:id="@+id/calculadora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="125dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="32dp"
         android:text="@string/calculadora"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/valor"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -140,7 +147,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/etPorcentagem"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.498" />
 
 
 </android.support.constraint.ConstraintLayout>
