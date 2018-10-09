@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CONTATOSATT</string>
+    <string name="nome">Nome</string>
+    <string name="email">Email</string>
+    <string name="telefone">Telefone</string>
+    <string name="celular">Celular</string>
+    <string name="sobrenome">Sobrenome </string>
+
+</resources>
