@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">03-calculadora</string>]
+    <string name="valor">Valor:</string>
+    <string name="porcentagem">Porcentagem:</string>
+    <string name="calcular">CALCULAR</string>
+    <string name="simboloP">% </string>
+    <string name="jurosMsg">JUROS: </string>
+    <string name="calculadora">Calculadora de Juros: </string>
+</resources>

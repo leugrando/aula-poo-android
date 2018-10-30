@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">02-Interface</string>
+    <string name="nome" translatable="false">Name</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="telefone" translatable="false">Phone</string>
+    <string name="celular" translatable="false">Cellphone</string>
+    <string name="sobrenome" translatable="false">Last Name </string>
+</resources>
