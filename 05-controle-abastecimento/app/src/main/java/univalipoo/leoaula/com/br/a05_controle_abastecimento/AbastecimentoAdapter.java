@@ -2,17 +2,18 @@ package univalipoo.leoaula.com.br.a05_controle_abastecimento;
 
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AbastecimentoAdapter extends RecyclerView.Adapter{
+public class AbastecimentoAdapter extends RecyclerView.Adapter {
 
     public ArrayList<Abastecimento> listaAbastecimento;
+
 
     @NonNull
     @Override
@@ -22,7 +23,7 @@ public class AbastecimentoAdapter extends RecyclerView.Adapter{
                 LayoutInflater.from(
                         parent.getContext()
                 ).inflate(
-                        R.layout.abastecimento_item_lista,
+                        R.layout.activity_abastecimento_item_lista,
                         parent,
                         false
                 );

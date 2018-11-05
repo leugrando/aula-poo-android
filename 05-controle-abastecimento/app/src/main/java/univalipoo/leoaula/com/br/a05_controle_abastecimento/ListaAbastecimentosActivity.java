@@ -1,13 +1,18 @@
 package univalipoo.leoaula.com.br.a05_controle_abastecimento;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
-import java.util.ArrayList;
+
+
+
+/**
+ * Created by 6427626 on 26/10/2018.
+ */
 
 public class ListaAbastecimentosActivity extends AppCompatActivity {
 
@@ -18,7 +23,7 @@ public class ListaAbastecimentosActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lista_abastecimentos);
+        setContentView(R.layout.activity_lista_abastecimentos);
 
         RecyclerView rvListaAbastecimento = findViewById(R.id.rvListaAbastecimentos);
 
@@ -32,8 +37,11 @@ public class ListaAbastecimentosActivity extends AppCompatActivity {
     }
 
     public void telaAdicionarAbastecimento(View v){
-        Intent intencao = new Intent(this.getApplicationContext(), adicionarAbastecimentoActivity.class);
 
+        Intent intencao = new Intent(this.getApplicationContext(), adicionarAbastecimentoActivity.class);
+        if(this.adaptador.listaAbastecimento.size()>0) {
+            intencao.putExtra("kmAntigo", this.adaptador.listaAbastecimento.get(this.adaptador.listaAbastecimento.size() - 1).getQuilometragem());
+        }
         startActivityForResult(intencao, RC_ADICIONAR_ABASTECIMENTO);
 
 //        this.adaptador.notifyDataSetChanged();
@@ -61,4 +69,11 @@ public class ListaAbastecimentosActivity extends AppCompatActivity {
         }
 
     }
+
+
+    public void voltar(View view) {
+        Intent intent =  new Intent(this.getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+    }
+
 }

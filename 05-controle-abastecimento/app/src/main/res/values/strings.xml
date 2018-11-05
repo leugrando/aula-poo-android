@@ -7,5 +7,7 @@
         <item>PETROBRAS</item>
         <item>OUTROS</item>
     </string-array>
+    <string name="campo_preenchido">Campo deve ser preenchido</string>
+    <string name="km_maior">Km de ser maior que ultimo inserido</string>
 
 </resources>
