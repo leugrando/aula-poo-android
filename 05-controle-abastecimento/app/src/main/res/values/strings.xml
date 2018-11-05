@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">05-controle-abastecimento</string>
+    <string-array name="PostosGasolina">
+        <item>TEXACO</item>
+        <item>IPIRANGA</item>
+        <item>SHELL</item>
+        <item>PETROBRAS</item>
+        <item>OUTROS</item>
+    </string-array>
+
 </resources>
