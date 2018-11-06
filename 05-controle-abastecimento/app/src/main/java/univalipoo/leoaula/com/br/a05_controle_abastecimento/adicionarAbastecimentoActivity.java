@@ -38,23 +38,24 @@ public class adicionarAbastecimentoActivity extends AppCompatActivity {
 
     public void salvarKm(View view) {
         Abastecimento abastecimento = new Abastecimento();
+            if (etQuilometragemAtual.getText().toString().equals("")) {
+                this.etQuilometragemAtual.setError(getString(R.string.campo_preenchido));
+                return;
+            }
+            if (etLitro.getText().toString().equals("")) {
+                this.etLitro.setError(getString(R.string.campo_preenchido));
+                return;
+            }
+            if (etData.getText().toString().equals("")) {
+                this.etData.setError(getString(R.string.campo_preenchido));
+                return;
+            }
 
-        if(etQuilometragemAtual.getText().toString().equals("")){
-            this.etQuilometragemAtual.setError(getString(R.string.campo_preenchido));
-            return;
-        }
-        if(etLitro.getText().toString().equals("")){
-            this.etLitro.setError(getString(R.string.campo_preenchido));
-            return;
-        }
-        if(etData.getText().toString().equals("")){
-            this.etData.setError(getString(R.string.campo_preenchido));
-            return;
-        }
-        if(Double.parseDouble(etQuilometragemAtual.getText().toString()) < kmAntigo){
-            this.etQuilometragemAtual.setError(getString(R.string.km_maior));
-            return;
-        }
+            if (Double.parseDouble(etQuilometragemAtual.getText().toString()) <= kmAntigo) {
+                this.etQuilometragemAtual.setError(getString(R.string.km_maior));
+                return;
+            }
+
 
         abastecimento.setQuilometragem(Float.parseFloat(etQuilometragemAtual.getText().toString()));
         abastecimento.setLitro(Float.parseFloat(etLitro.getText().toString()));

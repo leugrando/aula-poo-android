@@ -51,7 +51,7 @@ public class ListaAbastecimentosActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RC_ADICIONAR_ABASTECIMENTO){
-            //estou tratando o fechamento da activity AdicionarAvaliacaoActivity
+
             if(resultCode == 1){
                 Toast.makeText(this.getApplicationContext(), "Abastecimento salvo", Toast.LENGTH_LONG).show();
             }
