@@ -11,12 +11,12 @@ import android.widget.Spinner;
 
 
 public class adicionarAbastecimentoActivity extends AppCompatActivity {
-    private String postos[] = new String[]{"Ipiranga", "Petrobras", "Shell", "Texaco"};
+    private String postos[] = new String[]{"Ipiranga", "Petrobras", "Shell", "Texaco","Outros"};
     EditText etQuilometragemAtual;
     EditText etLitro;
     EditText etData;
     private Spinner sPosto;
-    private Float kmAntigo;
+    private Double kmAntigo;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,7 @@ public class adicionarAbastecimentoActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, postos);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        kmAntigo = this.getIntent().getFloatExtra("kmAntigo", -1);
+        kmAntigo = this.getIntent().getDoubleExtra("kmAntigo", -1);
 
         sPosto = (Spinner) findViewById(R.id.sPosto);
         sPosto.setAdapter(adapter);
@@ -51,7 +51,7 @@ public class adicionarAbastecimentoActivity extends AppCompatActivity {
             this.etData.setError(getString(R.string.campo_preenchido));
             return;
         }
-        if(Double.parseDouble(etQuilometragemAtual.getText().toString()) <= this.kmAntigo){
+        if(Double.parseDouble(etQuilometragemAtual.getText().toString()) < kmAntigo){
             this.etQuilometragemAtual.setError(getString(R.string.km_maior));
             return;
         }

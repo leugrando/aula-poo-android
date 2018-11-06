@@ -53,27 +53,13 @@ public class ListaAbastecimentosActivity extends AppCompatActivity {
         if(requestCode == RC_ADICIONAR_ABASTECIMENTO){
             //estou tratando o fechamento da activity AdicionarAvaliacaoActivity
             if(resultCode == 1){
-                Toast.makeText(this.getApplicationContext(), "AÇÃO 1!!!!!", Toast.LENGTH_LONG).show();
-                this.adaptador.notifyDataSetChanged();
-            }else if (resultCode == 2){
-                Toast.makeText(this.getApplicationContext(), "AÇÃO 2 -- -- - - - - - - ", Toast.LENGTH_LONG).show();
-                this.adaptador.notifyDataSetChanged();
-            }else if (resultCode == 0){
-                Toast.makeText(this.getApplicationContext(), "BACK BUTTON (PROVÁVEL)...", Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(this.getApplicationContext(), "Retorno não tratado...", Toast.LENGTH_LONG).show();
+                Toast.makeText(this.getApplicationContext(), "Abastecimento salvo", Toast.LENGTH_LONG).show();
             }
-        }else{
-            //veio de algum lugar obscuro...
+                this.adaptador.notifyDataSetChanged();
+                }else{
+                Toast.makeText(this.getApplicationContext(), "Erro ao salvar", Toast.LENGTH_LONG).show();
+            }
 
-        }
-
-    }
-
-
-    public void voltar(View view) {
-        Intent intent =  new Intent(this.getApplicationContext(), MainActivity.class);
-        startActivity(intent);
     }
 
 }

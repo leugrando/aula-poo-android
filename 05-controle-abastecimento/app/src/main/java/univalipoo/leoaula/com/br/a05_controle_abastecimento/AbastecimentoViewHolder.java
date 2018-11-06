@@ -11,18 +11,17 @@ import android.widget.TextView;
 
 public class AbastecimentoViewHolder extends RecyclerView.ViewHolder {
 
-    //esta classe representa cada gaveta que será apresentada na lista
 
     private TextView tvQuilometragem;
     private TextView tvLitro;
     private ImageView ivNomePosto;
     private TextView tvData;
 
-    public AbastecimentoViewHolder(View itemView) {
+    public AbastecimentoViewHolder(@NonNull View itemView) {
         super(itemView);
         this.tvQuilometragem = itemView.findViewById(R.id.tvQuilometragem);
         this.tvLitro = itemView.findViewById(R.id.tvLitro);
-        this.ivNomePosto = itemView.findViewById(R.id.ivNomePosto);
+        this.ivNomePosto = itemView.findViewById(R.id.ivNomePosto); //
         this.tvData = itemView.findViewById(R.id.tvData);
     }
 
@@ -39,13 +38,15 @@ public class AbastecimentoViewHolder extends RecyclerView.ViewHolder {
         this.tvData.setText( objetoAbastecimento.getData() );
 
         if(posto.equals("Ipiranga")){
-            ivNomePosto.setImageDrawable(ContextCompat.getDrawable(App.getContext(), R.drawable.ipi));
+            ivNomePosto.setImageResource( R.drawable.ipi);
         }else if(posto.equals("Petrobras")){
-            ivNomePosto.setImageDrawable(ContextCompat.getDrawable(App.getContext(), R.drawable.petrobras));
+            ivNomePosto.setImageResource( R.drawable.petrobras);
         }else if(posto.equals("Shell")){
-            ivNomePosto.setImageDrawable(ContextCompat.getDrawable(App.getContext(), R.drawable.shell));
+            ivNomePosto.setImageResource( R.drawable.shell);
+        }else if(posto.equals("Texaco")){
+            ivNomePosto.setImageResource( R.drawable.texaco);
         }else{
-            ivNomePosto.setImageDrawable(ContextCompat.getDrawable(App.getContext(), R.drawable.texaco));
+            ivNomePosto.setImageResource( R.drawable.postopadrao);
         }
     }
 
