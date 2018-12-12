@@ -1,13 +1,17 @@
 package univalipoo.leoaula.com.br.a05_controle_abastecimento;
 
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class adicionarAbastecimentoActivity extends AppCompatActivity {
@@ -17,6 +21,10 @@ public class adicionarAbastecimentoActivity extends AppCompatActivity {
     EditText etData;
     private Spinner sPosto;
     private Double kmAntigo;
+    private Abastecimento AbastecimentoASalvar = new Abastecimento();
+    private boolean permissao;
+    private LocationManager locationManager;
+    private Location location;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +42,10 @@ public class adicionarAbastecimentoActivity extends AppCompatActivity {
         etQuilometragemAtual = findViewById(R.id.etQuilometragem);
         etLitro = findViewById(R.id.etLitro);
         etData = findViewById(R.id.etData);
-    }
 
-    public void salvarKm(View view) {
+
+    }
+        public void salvarKm(View view) {
         Abastecimento abastecimento = new Abastecimento();
             if (etQuilometragemAtual.getText().toString().equals("")) {
                 this.etQuilometragemAtual.setError(getString(R.string.campo_preenchido));
@@ -55,6 +64,17 @@ public class adicionarAbastecimentoActivity extends AppCompatActivity {
                 this.etQuilometragemAtual.setError(getString(R.string.km_maior));
                 return;
             }
+            if(permissao == true){
+                GPSprovider gps = new GPSprovider(getApplicationContext());
+                Location location = gps.getLocation();
+                if (location != null){
+                    abastecimento.setLatitude(location.getLatitude());
+                    abastecimento.setLongitude(location.getLongitude());
+                }
+            } else {
+                abastecimento.setLatitude((double) 010);
+                abastecimento.setLongitude((double) 010);
+            }
 
 
         abastecimento.setQuilometragem(Float.parseFloat(etQuilometragemAtual.getText().toString()));
@@ -62,7 +82,7 @@ public class adicionarAbastecimentoActivity extends AppCompatActivity {
         abastecimento.setData(etData.getText().toString());
         abastecimento.setNomePosto(sPosto.getSelectedItem().toString());
 
-        boolean salvo = AbastecimentoDao.salvar(this.getApplicationContext(), abastecimento);
+        boolean salvo = AbastecimentoDao.salvar(this.getApplicationContext(), AbastecimentoASalvar);
 
         if(salvo){
             setResult(1);
@@ -74,3 +94,4 @@ public class adicionarAbastecimentoActivity extends AppCompatActivity {
 
 
 }
+

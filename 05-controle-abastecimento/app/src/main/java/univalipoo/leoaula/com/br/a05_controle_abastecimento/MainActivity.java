@@ -15,10 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentManager fm = MainActivity.this.getSupportFragmentManager();
-        for (int i = 0; i < fm.getBackStackEntryCount(); ++i) {
-            fm.popBackStack();
-        }
         setContentView(R.layout.activity_main);
 
     }
@@ -32,9 +28,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ArrayList<Abastecimento> abastecimentos = new ArrayList<Abastecimento>();
+        setContentView(R.layout.activity_main);
+        ArrayList<Abastecimento> abastecimentos;
 
-        abastecimentos = AbastecimentoDao.getLista(this.getApplicationContext());
+        abastecimentos = AbastecimentoDao.getList(this.getApplicationContext());
 
         if (abastecimentos.size() > 1) {
             double autonomia;

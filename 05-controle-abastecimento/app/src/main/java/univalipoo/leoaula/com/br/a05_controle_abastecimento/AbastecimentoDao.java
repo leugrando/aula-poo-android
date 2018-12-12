@@ -1,71 +1,55 @@
 package univalipoo.leoaula.com.br.a05_controle_abastecimento;
 
+import android.content.ContentValues;
 import android.content.Context;
-import android.content.Context;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
 import java.util.ArrayList;
-
 public class AbastecimentoDao {
 
-    private static ArrayList<Abastecimento> AL_CACHE = new ArrayList<>();
+    private static ArrayList<Abastecimento> Cache = new ArrayList<Abastecimento>();
 
-    private static final String NOME_ARQUIVO = "Abastecimentoss.txt";
+    public static boolean salvar(Context context, Abastecimento object){
 
-    public static boolean salvar(Context c, Abastecimento aSerSalva){
-        AL_CACHE.add(aSerSalva);
+        DBHelper helper = new DBHelper (context);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues data = new ContentValues();
+        data.put("km" , object.getQuilometragem());
+        data.put("litros" , object.getLitro());
+        data.put("latitude" , object.getLatitude());
+        data.put("longitude" , object.getLongitude());
+        data.put("data" , object.getData());
+        data.put("nomeposto" , object.getNomePosto());
+        long id = db.insert("abastecimentos", null, data);
+        object.setId(id);
 
-        String avEmString = "";
-        avEmString += aSerSalva.getQuilometragem() + ";";
-        avEmString += aSerSalva.getLitro() + ";";
-        avEmString += aSerSalva.getNomePosto() + ";";
-        avEmString += aSerSalva.getData() + ";" + "\n";
-
-        File refArquivo = new File( c.getFilesDir().getPath() + NOME_ARQUIVO );
-        try {
-            FileWriter escritor = new FileWriter(refArquivo, true);
-            escritor.write( avEmString );
-            escritor.close();
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+        Cache.add(object);
+        return true;
     }
 
-    public static ArrayList<Abastecimento> getLista(Context c){
-        AL_CACHE = new ArrayList<>();
+    public static ArrayList <Abastecimento> getList (Context context)
+    {
+        Cache = new ArrayList<Abastecimento>();
 
-        File refArquivo = new File( c.getFilesDir().getPath() + NOME_ARQUIVO );
+        DBHelper db = new DBHelper(context);
+        SQLiteDatabase database = db.getReadableDatabase();
 
-        try {
-            FileReader leitor = new FileReader(refArquivo);
-            BufferedReader leitorDeLinha = new BufferedReader(leitor);
+        String BuscarAbastecimentos = "SELECT km, litros, latitude, longitude, date, posto, id FROM abastecimentos";
+        Cursor cursor = database.rawQuery(BuscarAbastecimentos, null);
 
-            String linhaAbastecimento = null;
+        while (cursor.moveToNext())
+        {
+            Abastecimento next = new Abastecimento();
+            next.setQuilometragem(cursor.getFloat(0));
+            next.setLitro(cursor.getFloat(1));
+            next.setLatitude(cursor.getDouble(2));
+            next.setLongitude(cursor.getDouble(3));
+            next.setData(cursor.getString(4));
+            next.setNomePosto(cursor.getString(5));
+            next.setId(cursor.getLong(6));
 
-            while((linhaAbastecimento = leitorDeLinha.readLine()) != null){
-
-                String[] partesDaLinha = linhaAbastecimento.split(";");
-                Abastecimento daVez = new Abastecimento();
-                daVez.setQuilometragem(Float.parseFloat(partesDaLinha[0]));
-                daVez.setLitro(Float.parseFloat(partesDaLinha[1]));
-                daVez.setNomePosto( partesDaLinha[2] );
-                daVez.setData( partesDaLinha[3] );
-                AL_CACHE.add(daVez);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            Cache.add(next);
         }
-
-        return AL_CACHE;
+        return Cache;
     }
-
-
 }
